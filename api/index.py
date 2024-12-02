@@ -1,9 +1,10 @@
-from flask import Flask, render_template_string
+from flask import Flask
 
 app = Flask(__name__)
 
 site = """
-```rs
+<html data-darkreader-proxy-injected="true"><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">use std::collections::HashMap;
+
 #[derive(Debug)]
 struct Url(&amp;'static str);
 
@@ -41,7 +42,7 @@ struct Info {
     me: Me,
     links: Links,
     stack: Stack,
-    projects: Option<(&'static str, (Stack, Url))>,
+    projects: Option&lt;HashMap&lt;&amp;'static str, (Stack, Url)&gt;&gt;,
 }
 
 fn main() {
@@ -49,7 +50,8 @@ fn main() {
         me: Me {
             nick: "MeSSengeR.qs",
             avatar: "https://cdn.discordapp.com/avatars/1140982742100746260/115bd7f5b63b0c0dad5f502cf873a6dc?size=2048",
-            about: "I'm a Developer specialized in Web (backend) development. I'm also learning Rust and F#.",
+            about: "I'm a Developer specialized in Web (backend) development. I'm also learning \
+            Rust and F#.",
         },
         links: Links {
             github: (
@@ -99,30 +101,10 @@ fn main() {
     };
 
     println!("{:?}", info)
-}
-```
+}</pre></body></html>
 """
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    return render_template_string(f"""<html lang='en'>
-    <head>
-        <title>mSSr</title>
-        <link href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.css" rel="stylesheet">
-        <style>
-            body {{
-                margin: 2rem;
-                font-family: sans-serif;
-            }}
-            .markdown-body {{
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                padding: 2rem;
-                border-radius: 8px;
-            }}
-        </style>
-    </head>
-    <body>
-        <article class="markdown-body">{site}</article>
-    </body>
-    </html>""")
+    return site
