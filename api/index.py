@@ -1,10 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
 site = """
-<html data-darkreader-proxy-injected="true"><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">use std::collections::HashMap;
-
+```rs
 #[derive(Debug)]
 struct Url(&amp;'static str);
 
@@ -42,7 +41,7 @@ struct Info {
     me: Me,
     links: Links,
     stack: Stack,
-    projects: Option&lt;HashMap&lt;&amp;'static str, (Stack, Url)&gt;&gt;,
+    projects: Option<(&'static str, (Stack, Url))>,
 }
 
 fn main() {
@@ -103,10 +102,26 @@ fn main() {
 }</pre></body></html>
 """
 
-@app.route('/')
-def home():
-    return site
-
-@app.route('/{a}')
-def any(a):
-    return site
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template_string(f"""<html lang='en'>
+    <head>
+        <title>mSSr</title>
+        <link href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown-light.css" rel="stylesheet">
+        <style>
+            body {{
+                margin: 2rem;
+                font-family: sans-serif;
+            }}
+            .markdown-body {{
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+                border-radius: 8px;
+            }}
+        </style>
+    </head>
+    <body>
+        <article class="markdown-body">{site}</article>
+    </body>
+    </html>"")
