@@ -109,5 +109,5 @@ def home():
     return site
 
 @app.route('/{a}')
-def home(a):
+def any(a):
     return site
