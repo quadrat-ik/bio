@@ -50,8 +50,7 @@ fn main() {
         me: Me {
             nick: "MeSSengeR.qs",
             avatar: "https://cdn.discordapp.com/avatars/1140982742100746260/115bd7f5b63b0c0dad5f502cf873a6dc?size=2048",
-            about: "I'm a Developer specialized in Web (backend) development. I'm also learning \
-            Rust and F#.",
+            about: "I'm a Developer specialized in Web (backend) development. I'm also learning Rust and F#.",
         },
         links: Links {
             github: (
