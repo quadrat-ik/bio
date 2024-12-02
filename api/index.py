@@ -3,38 +3,38 @@ from flask import Flask
 app = Flask(__name__)
 
 site = """
-use std::collections::HashMap;
+<html data-darkreader-proxy-injected="true"><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">use std::collections::HashMap;
 
 #[derive(Debug)]
-struct Url(&'static str);
+struct Url(&amp;'static str);
 
 #[derive(Debug)]
 struct StackInfo {
-    name: &'static str,
+    name: &amp;'static str,
     version: f32,
     url: Url,
 }
 
 #[derive(Debug)]
 struct Links {
-    github: (&'static str, Url),
-    discord: (&'static str, Url),
+    github: (&amp;'static str, Url),
+    discord: (&amp;'static str, Url),
 }
 
 #[derive(Debug)]
 struct Stack {
-    langs: Vec<StackInfo>,
-    frameworks: Vec<StackInfo>,
-    os: Vec<StackInfo>,
+    langs: Vec&lt;StackInfo&gt;,
+    frameworks: Vec&lt;StackInfo&gt;,
+    os: Vec&lt;StackInfo&gt;,
     /// String - Other "Type"
-    other: Vec<(StackInfo, &'static str)>,
+    other: Vec&lt;(StackInfo, &amp;'static str)&gt;,
 }
 
 #[derive(Debug)]
 struct Me {
-    nick: &'static str,
-    avatar: &'static str,
-    about: &'static str,
+    nick: &amp;'static str,
+    avatar: &amp;'static str,
+    about: &amp;'static str,
 }
 
 #[derive(Debug)]
@@ -42,7 +42,7 @@ struct Info {
     me: Me,
     links: Links,
     stack: Stack,
-    projects: Option<(&'static str, (Stack, Url)>)>,
+    projects: Option&lt;HashMap&lt;&amp;'static str, (Stack, Url)&gt;&gt;,
 }
 
 fn main() {
@@ -101,7 +101,7 @@ fn main() {
     };
 
     println!("{:?}", info)
-}    
+}</pre></body></html>
 """
 
 @app.route('/')
