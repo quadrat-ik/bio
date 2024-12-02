@@ -99,7 +99,8 @@ fn main() {
     };
 
     println!("{:?}", info)
-}</pre></body></html>
+}
+```
 """
 
 @app.route('/', defaults={'path': ''})
@@ -124,4 +125,4 @@ def catch_all(path):
     <body>
         <article class="markdown-body">{site}</article>
     </body>
-    </html>"")
+    </html>""")
