@@ -3,38 +3,36 @@ from flask import Flask
 app = Flask(__name__)
 
 site = """
-<html data-darkreader-proxy-injected="true"><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">use std::collections::HashMap;
-
-#[derive(Debug)]
-struct Url(&amp;'static str);
+<html data-darkreader-proxy-injected="true"><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">#[derive(Debug)]
+struct Url(&'static str);
 
 #[derive(Debug)]
 struct StackInfo {
-    name: &amp;'static str,
+    name: &'static str,
     version: f32,
     url: Url,
 }
 
 #[derive(Debug)]
 struct Links {
-    github: (&amp;'static str, Url),
-    discord: (&amp;'static str, Url),
+    github: (&'static str, Url),
+    discord: (&'static str, Url),
 }
 
 #[derive(Debug)]
 struct Stack {
-    langs: Vec&lt;StackInfo&gt;,
-    frameworks: Vec&lt;StackInfo&gt;,
-    os: Vec&lt;StackInfo&gt;,
+    langs: Vec<StackInfo>,
+    frameworks: Vec<StackInfo>,
+    os: Vec<StackInfo>,
     /// String - Other "Type"
-    other: Vec&lt;(StackInfo, &amp;'static str)&gt;,
+    other: Vec<(StackInfo, &'static str)>,
 }
 
 #[derive(Debug)]
 struct Me {
-    nick: &amp;'static str,
-    avatar: &amp;'static str,
-    about: &amp;'static str,
+    nick: &'static str,
+    avatar: &'static str,
+    about: &'static str,
 }
 
 #[derive(Debug)]
@@ -42,7 +40,7 @@ struct Info {
     me: Me,
     links: Links,
     stack: Stack,
-    projects: Option&lt;HashMap&lt;&amp;'static str, (Stack, Url)&gt;&gt;,
+    projects: Option<(&'static str, (Stack, Url))>,
 }
 
 fn main() {
@@ -50,8 +48,7 @@ fn main() {
         me: Me {
             nick: "MeSSengeR.qs",
             avatar: "https://cdn.discordapp.com/avatars/1140982742100746260/115bd7f5b63b0c0dad5f502cf873a6dc?size=2048",
-            about: "I'm a Developer specialized in Web (backend) development. I'm also learning \
-            Rust and F#.",
+            about: "I'm a Developer specialized in Web (backend) development. I'm also learning             Rust and F#.",
         },
         links: Links {
             github: (
