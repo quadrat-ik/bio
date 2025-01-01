@@ -21,9 +21,9 @@ struct Links {
 
 #[derive(Debug)]
 struct Stack {
-    langs: Vec<StackInfo>,
-    frameworks: Vec<StackInfo>,
-    os: Vec<StackInfo>,
+    langs: Vec,
+    frameworks: Vec,
+    os: Vec,
     /// String - Other "Type"
     other: Vec<(StackInfo, &'static str)>,
 }
@@ -47,15 +47,15 @@ fn main() {
     let info: Info = Info {
         me: Me {
             nick: "MeSSengeR.qs",
-            avatar: "https://cdn.discordapp.com/avatars/1140982742100746260/115bd7f5b63b0c0dad5f502cf873a6dc?size=2048",
-            about: "I'm a Developer specialized in Web (backend) development. I'm also learning Rust and F#.",
+            avatar: "https://cdn.discordapp.com/avatars/1140982742100746260/8ca3fa26d8500f57258d0a521396af74.webp?size=2048",
+            about: "I'm a Developer specialized in Web (backend) development. I'm also learning Rust.",
         },
         links: Links {
-            github: (
+            github: ("quadrat-ik", Url("https://github.com/quadrat-ik")),
+            discord: (
                 "messenger.qs",
                 Url("https://discord.andcool.ru/1140982742100746260"),
             ),
-            discord: ("quadrat-ik", Url("https://github.com/quadrat-ik")),
         },
         stack: Stack {
             langs: vec![
